@@ -1,6 +1,6 @@
 
 
-<form (ngSubmit)="onSubmit()" #productForm="ngForm">
+<form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm">
     <div>
         <input type="text" class="form-control my-2" placeholder="Name" name="name" [(ngModel)]="product.name" #name="ngModel" required minlength="5">
         <div *ngIf="name.invalid && (name.dirty) || name.touched" class="text-danger">

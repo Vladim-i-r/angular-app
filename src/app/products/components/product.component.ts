@@ -13,9 +13,9 @@ import { FormComponent } from './form/form.component';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit{
-
+  
   products: Product[] = [];
-
+  
   constructor(private service: ProductService) { 
   }
   
@@ -25,5 +25,10 @@ export class ProductComponent implements OnInit{
     })
   }
   
+  addProduct(product: Product) {
+    product.id = new Date().getTime();
+    this.products.push(product);                          //? Forma MUTABLE
+    //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
+  }
 }
 

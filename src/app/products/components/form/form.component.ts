@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../models/product';
 import { FormsModule } from '@angular/forms';
 
@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent {           
-
+export class FormComponent {
+  
   // product: Product= new Product();
   product: Product = { 
     id: 0,         
@@ -18,4 +18,12 @@ export class FormComponent {
     description: '',
     price: 0
   };
+
+  @Output() newProductEvent = new EventEmitter();       // Indicar que vamos a enviar informacion al componente padre
+
+  
+  onSubmit() {
+    this.newProductEvent.emit(this.product);
+    console.log(this.product);
+  }           
 }

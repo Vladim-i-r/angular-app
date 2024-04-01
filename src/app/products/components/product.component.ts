@@ -13,6 +13,7 @@ import { FormComponent } from './form/form.component';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit{
+
   
   products: Product[] = [];
   
@@ -43,10 +44,20 @@ export class ProductComponent implements OnInit{
       this.products.push(product);                          //? Forma MUTABLE
       //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
     }
+
+    this.productSelected = new Product();         // esto es para limpiar el form despues de submit
   }
 
   onUpdateProduct(productRow: Product) {
     this.productSelected = productRow;
   }
+
+  onRemoveProduct(id: number) {
+    this.products = this.products.filter(prod => prod.id != id);
+  }
+
+
+
+
 }
 

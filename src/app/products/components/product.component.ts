@@ -3,11 +3,12 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { FormComponent } from './form/form.component';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [],                        // Si se requiere que este sea el root se agregan las CommonModule, RouterOutlet
+  imports: [FormComponent],                        // Si se requiere que este sea el root se agregan las CommonModule, RouterOutlet
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })

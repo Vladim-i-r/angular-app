@@ -31,17 +31,23 @@ export class ProductComponent implements OnInit{
   addProduct(product: Product) {
 
     if(product.id > 0){                             //* UPDATE
+      this.service.update(product).subscribe(productUpdated => {
 
-      this.products = this.products.map(prod => {
-        if (prod.id == product.id) {
-          return {... product}
-        }
-        return prod;
-      })
+        this.products = this.products.map(prod => {       // LOCAL
+          if (prod.id == product.id) {
+            return {... productUpdated}                   // product LOCAL
+          }
+          return prod;
+        })
+      });
     } else {                                        //* CREATE
 
-      product.id = new Date().getTime();
-      this.products.push(product);                          //? Forma MUTABLE
+      this.service.create(product).subscribe(productNew => {      //! ESTO YA ES CON BACKEND
+        this.products.push({...productNew});
+      })
+
+      // product.id = new Date().getTime();                       //! ESTO ES LOCAL 
+      // this.products.push(product);                          //? Forma MUTABLE
       //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
     }
 
@@ -53,7 +59,11 @@ export class ProductComponent implements OnInit{
   }
 
   onRemoveProduct(id: number) {
-    this.products = this.products.filter(prod => prod.id != id);
+    this.service.remove(id).subscribe(()=>{
+      
+      this.products = this.products.filter(prod => prod.id != id);
+      
+    })
   }
 
 

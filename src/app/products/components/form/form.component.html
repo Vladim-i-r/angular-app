@@ -3,14 +3,14 @@
 <form (ngSubmit)="onSubmit()" #productForm="ngForm">
     <div>
         <input type="text" class="form-control my-2" placeholder="Name" name="name" [(ngModel)]="product.name" #name="ngModel" required minlength="5">
-        <div *ngIf="name.invalid && (name.dirty) || name.touched" class="alert alert-danger">
+        <div *ngIf="name.invalid && (name.dirty) || name.touched" class="text-danger">
             <div *ngIf="name.errors!['required']">Name is required!!</div>
             <div *ngIf="name.errors!['minlength']">Name must have at least 5 characters!!</div>
         </div>
     </div>
     <div>
         <input type="text" class="form-control my-2" placeholder="Description" name="description" [(ngModel)]="product.description" #description="ngModel" required>
-        <div *ngIf="description.invalid && (description.dirty) || description.touched" class="alert alert-danger">
+        <div *ngIf="description.invalid && (description.dirty) || description.touched" class="text-danger">
             @if (description.errors!['required']) {
                 <div>Description is required!!</div>
             }
@@ -18,7 +18,7 @@
     </div>
     <div>
         <input type="number" class="form-control my-2" placeholder="Price" name="price" [(ngModel)]="product.price" #price="ngModel" required min="100">
-        <div *ngIf="price.invalid && (price.dirty) || price.touched" class="alert alert-danger">
+        <div *ngIf="price.invalid && (price.dirty) || price.touched" class="text-danger">
             @if (price.errors!['required']) {
                 <div>Price is required!!</div>
             }

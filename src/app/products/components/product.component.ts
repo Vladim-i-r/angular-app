@@ -16,6 +16,8 @@ export class ProductComponent implements OnInit{
   
   products: Product[] = [];
   
+  productSelected: Product =  new Product;
+  
   constructor(private service: ProductService) { 
   }
   
@@ -29,6 +31,10 @@ export class ProductComponent implements OnInit{
     product.id = new Date().getTime();
     this.products.push(product);                          //? Forma MUTABLE
     //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
+  }
+
+  onUpdateProduct(productRow: Product) {
+    this.productSelected = productRow;
   }
 }
 

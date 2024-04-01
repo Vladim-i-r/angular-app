@@ -49,7 +49,7 @@ export class ProductComponent implements OnInit{
   }
 
   onUpdateProduct(productRow: Product) {
-    this.productSelected = productRow;
+    this.productSelected = {...productRow}; // se le aplica a la copia de productRow y evita que se vean cambios en tiempo real 
   }
 
   onRemoveProduct(id: number) {

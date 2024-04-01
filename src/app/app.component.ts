@@ -14,7 +14,7 @@ import { ProductComponent } from './products/components/product.component';
 })
 export class AppComponent {
   title: string = 'Hola Mundo Angular 17';  // No tenia el string, pero con las comillas entiende que es string, antes era title = '';
-  enabled: boolean = false;
+  enabled: boolean = true;
 
   courses: string[] = ['Angular','SpringBoot','React'];
 

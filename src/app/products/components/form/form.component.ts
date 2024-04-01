@@ -25,5 +25,9 @@ export class FormComponent {
   onSubmit() {
     this.newProductEvent.emit(this.product);
     console.log(this.product);
-  }           
+  }    
+  
+  clean(): void {
+    this.product = new Product();
+  }
 }

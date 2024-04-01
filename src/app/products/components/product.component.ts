@@ -28,9 +28,21 @@ export class ProductComponent implements OnInit{
   }
   
   addProduct(product: Product) {
-    product.id = new Date().getTime();
-    this.products.push(product);                          //? Forma MUTABLE
-    //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
+
+    if(product.id > 0){                             //* UPDATE
+
+      this.products = this.products.map(prod => {
+        if (prod.id == product.id) {
+          return {... product}
+        }
+        return prod;
+      })
+    } else {                                        //* CREATE
+
+      product.id = new Date().getTime();
+      this.products.push(product);                          //? Forma MUTABLE
+      //this.products = [... this.products, {...product}];    //? Forma INMUTABLE EN ANGULAR DA LO MISMO EN REACT NO 
+    }
   }
 
   onUpdateProduct(productRow: Product) {

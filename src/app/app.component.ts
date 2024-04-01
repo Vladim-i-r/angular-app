@@ -15,6 +15,8 @@ export class AppComponent {
   title: string = 'Hola Mundo Angular 17';  // No tenia el string, pero con las comillas entiende que es string, antes era title = '';
   enabled: boolean = false;
 
+  courses: string[] = ['Angular','SpringBoot','React'];
+
   setEnabled(): void{
     this.enabled = this.enabled? false: true;  // Esto es un if, si es true se cambia a false
     console.log('Hemos cambiado el title con el click!')
